@@ -29,15 +29,11 @@ namespace ServerlessMoedas
 
             if (!String.IsNullOrWhiteSpace(moeda))
             {
-                using (var conexao = new SqlConnection(
-                    Environment.GetEnvironmentVariable("BaseCotacoes")))
-                {
-                    return (ActionResult)new OkObjectResult(
-                        _context.Cotacoes
-                            .Where(c => c.Sigla == moeda)
-                            .FirstOrDefault()
-                        );
-                }
+                return (ActionResult)new OkObjectResult(
+                    _context.Cotacoes
+                        .Where(c => c.Sigla == moeda)
+                        .FirstOrDefault()
+                    );
             }
             else
             {
